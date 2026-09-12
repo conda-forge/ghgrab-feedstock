@@ -17,12 +17,12 @@ build:
       CARGO_PROFILE_RELEASE_LTO: fat
     content:
       # ring's C objects, built by the ppc64le cross-gcc, carry relocations that
-      # the rust-lld rustc injects via `-B .../gcc-ld -fuse-ld=lld` cannot
-      # resolve. Turning off self-contained linking makes rustc fall back to the
-      # toolchain's own linker (GNU ld), which handles them.
+      # the rust-lld rustc selects via `-fuse-ld=lld` cannot resolve. `-C
+      # link-arg` is appended after rustc's own flags and gcc honours the last
+      # `-fuse-ld`, so this picks the toolchain's GNU ld, which handles them.
       - if: target_platform == "linux-ppc64le"
         then:
-          - export RUSTFLAGS="${RUSTFLAGS} -Clink-self-contained=no"
+          - export RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=bfd"
       - if: unix
         then:
           - cargo auditable install --locked --no-track --bins --root ${{ PREFIX }} --path .
