@@ -1,5 +1,5 @@
 context:
-  version: "2.3.0"
+  version: "2.3.1"
 
 package:
   name: ghgrab
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/abhixdd/ghgrab/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 71b90fda5c0d605b0b10d2a3f1744828afe91f6ab3f87119a3b1ede9fa40ba76
+  sha256: 1efbe3553a29a2c62d71b0a1eee18937ae2beb80f9313426bfe1a152064ff5a7
 
 build:
   number: 0
