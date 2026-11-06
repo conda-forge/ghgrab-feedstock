@@ -10,7 +10,7 @@ source:
   sha256: 1efbe3553a29a2c62d71b0a1eee18937ae2beb80f9313426bfe1a152064ff5a7
 
 build:
-  number: 0
+  number: 1
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
@@ -40,7 +40,7 @@ requirements:
     - ${{ compiler('rust') }}
     - cargo-bundle-licenses
     - cargo-auditable
-    - pkg-config
+    - pkgconf
   host:
     - liblzma-devel
 
